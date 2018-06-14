@@ -1,0 +1,192 @@
+page-receipt {
+
+    svg.feather {
+        stroke: color($colors, primary);
+    }
+    
+    ion-row {
+        svg.feather {
+            width: 48px;
+            height: 48px;
+            stroke: color($colors, primary);
+            margin-right: auto;
+            margin-left: auto;
+            display: block;
+        }
+    }
+
+    .segment-ios .segment-button:first-of-type {
+        border-radius: 0;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        color: color($colors, text);
+        border-bottom-color: color($colors, light);
+
+        &:hover {
+            background-color: white;
+        }
+
+        &.segment-activated {
+            background-color: transparent;
+            color: color($colors, text);
+            border-left: 1px solid color($colors, light);
+            border-right: 1px solid color($colors, light);
+            border-top: 1px solid color($colors, light);
+            border-bottom: none;
+        }
+    }
+    .segment-ios .segment-button:last-of-type {
+        border-radius: 0;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        color: color($colors, text);
+        border-bottom-color: color($colors, light);
+
+        &:hover {
+            background-color: white;
+            
+        }
+
+        &.segment-activated {
+            background-color: transparent;
+            color: color($colors, text);
+            border-left: 1px solid color($colors, light);
+            border-right: 1px solid color($colors, light);
+            border-top: 1px solid color($colors, light);
+            border-bottom: none;
+        }
+    }
+
+    ion-row {
+        margin-bottom: 16px;
+    }
+
+    ion-row.order-details {
+        h3 {
+            font-size: 1em;
+            font-weight: 400;
+        }
+
+        span {
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+    }
+
+    verification-display {
+        width: 100%;
+
+        h3 {
+            font-size: 3em;
+            height: 66px;
+            line-height: 66px;
+        }
+    }
+
+    ion-item.item-block.item.product {
+        border-bottom: 1px solid color($colors, light);
+        padding-left: 0;
+
+        div.item-inner {
+            border-bottom: 0;
+        }
+
+        ion-thumbnail {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+
+            margin-right: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        ion-label.label {
+            margin: -5px 8px 11px 0;
+        }
+
+        h2 {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        span {
+            color: color($colors, text-light);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ion-note.note {
+            margin: 0;
+            text-align: right;
+
+            h4 {
+                color: color($colors, text);
+                font-weight: 600;
+                margin-top: -0.5em;
+            }
+
+            span {
+                color: color($colors, text-light);
+                font-weight: 400;
+                font-size: 0.8em;
+                
+            }
+        }
+    }
+
+    ion-item.subtotal ion-label div {
+        position: relative;
+        height: 24px;
+        h4 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+
+        span {
+            position: absolute;
+            right:0;
+            top: 0;
+            font-size: 1em;
+        }
+
+        &.promo-code {
+            h4 {
+                font-size: 0.8em;
+                font-weight: 400;
+                color: color($colors, text-light);
+            }
+
+            span {
+                color: color($colors, primary);
+            }
+        }
+    }
+
+    ion-item.total ion-label div {
+        position: relative;
+        height: 48px;
+        h4 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+            line-height: 48px;
+        }
+
+        span {
+            position: absolute;
+            right:0;
+            top: 0;
+            font-size: 2.2em;
+        }
+    }
+}

@@ -1,0 +1,411 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@font-face {
+    font-family: 'Fira Sans Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/FiraSansCondensed-Regular.ttf');
+  }
+
+  @font-face {
+    font-family: 'Fira Sans Condensed';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../assets/fonts/FiraSansCondensed-Medium.ttf');
+  }
+
+  @font-face {
+    font-family: 'Fira Sans Condensed';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/FiraSansCondensed-SemiBold.ttf');
+  }
+
+@media only screen
+    and (device-width : 375px)
+    and (device-height : 812px)
+    and (-webkit-device-pixel-ratio : 3)
+    and (orientation : portrait) {
+        html.standalone {
+            height: 812px !important;
+            width: 375px !important;
+
+            ion-navbar {
+                height: 88px;
+                min-height: 88px;
+
+                ion-title.title.title-ios {
+                    top: 17px;
+                }
+
+                button {
+                    top: 17px;
+                }
+            }
+        }
+    }
+
+@media only screen
+    and (device-width : 375px)
+    and (device-height : 812px)
+    and (-webkit-device-pixel-ratio : 3)
+    and (orientation : landscape) {
+        html.standalone {
+            width: 812px !important;
+            height: 375px !important;
+        }
+    }
+
+ion-app {
+    ion-navbar {
+
+        .toolbar-background {
+            background: color($colors, primary); /* Old browsers */
+            background: -moz-linear-gradient(225deg, color($colors, accent) 0%, color($colors, primary) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(225deg, color($colors, accent) 00%,color($colors, primary) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(225deg, color($colors, accent) 00%,color($colors, primary) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        }
+
+        ion-title.title {
+            img {
+                height: 36px;
+            }
+        }
+
+        ion-buttons {
+            .button {
+                font-size: 1em;
+            }
+
+            .bar-button-default {
+                font-size: 1em;
+            }
+        }
+
+        &.light {
+            .toolbar-background {
+                background: white;
+            }
+
+            ion-title.title {
+                .toolbar-title {
+                    color: color($colors, text);
+                }
+            }
+        }
+
+        &.grey {
+            .toolbar-background {
+                background: color($colors, nav-grey);
+                border-color: transparent;
+            }
+
+            button.back-button {
+                ion-icon {
+                    stroke: color($colors, primary);
+                }
+            }
+
+            ion-title.title {
+                .toolbar-title {
+                    color: color($colors, text);
+                }
+            }
+        }
+    }
+}
+
+ion-searchbar.searchbar {
+    .button-clear-md-dark {
+        color: white;
+    }
+}
+
+button.button-block.button {
+    background: color($colors, primary); /* Old browsers */
+    background: -moz-linear-gradient(225deg, color($colors, accent) 0%, color($colors, primary) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(225deg, color($colors, accent) 00%,color($colors, primary) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(225deg, color($colors, accent) 00%,color($colors, primary) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    svg {
+      margin-left: 0;
+      margin-right: -10px;
+      padding-left: 5px;
+    }
+  }
+
+button.button-block-white.button {
+    background: color($colors, white); /* Old browsers */
+    background: -moz-linear-gradient(225deg, color($colors, accent) 0%, color($colors, white) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(225deg, color($colors, accent) 00%,color($colors, white) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(225deg, color($colors, accent) 00%,color($colors, white) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    svg {
+      margin-left: 0;
+      margin-right: -10px;
+      padding-left: 5px;
+    }
+  }
+
+  button.button[icon-start] {
+
+    svg {
+      margin-right: 0;
+      margin-left: -10px;
+      padding-right: 5px;
+    }
+  }
+
+  button.button[icon-end] {
+
+    svg {
+      margin-left: 0;
+      margin-right: -10px;
+      padding-left: 5px;
+    }
+  }
+
+  button.text-only {
+    background: transparent;
+    border: none;
+    color: color($colors, text-light);
+    display: block;
+    width: 100%;
+
+    svg {
+      margin-right: 0;
+      padding-right: 5px;
+    }
+  }
+
+.feather {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+// SVG Formatting
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+    @if $index {
+      @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+  }
+  $encoding-reference: (
+    ('%', '%25'),
+    ('<', '%3C'),
+    ('>', '%3E'),
+    ('"', '%22'),
+    ('"', "'"),
+    ('#', '%23'),
+    ('&', '%26')
+    // Here are a few more characters you could encode
+    //(' ','%20'),
+    //('!','%21'),
+    //('$','%24'),
+    //(',','%27'),
+    //('(','%28'),
+    //(')','%29'),
+    //('*','%2A'),
+    //('+','%2B'),
+    //('"','%2C'),
+    //('/','%2F'),
+    //(':','%3A'),
+    //(';','%3B'),
+    //('=','%3D'),
+    //('?','%3F'),
+    //('@','%40'),
+    //('[','%5B'),
+    //(']','%5D'),
+    //('^','%5E'),
+    //('`','%60'),
+    //('{','%7B'),
+    //('|','%7C'),
+    //('}','%7D'),
+    //('~','%7E'),
+    //(',','%E2%80%9A'),
+    //('\\','%5C'),
+    //('_','%5F'),
+    //('-','%2D'),
+    //('.','%2E'),
+    // ('\','%5C'),
+    // (' ','%7F'),
+    // ('`','%E2%82%AC'),
+    //('ƒ','%C6%92'),
+    //('„','%E2%80%9E'),
+    //('…','%E2%80%A6'),
+    //('†','%E2%80%A0'),
+    //('‡','%E2%80%A1'),
+    //('ˆ','%CB%86'),
+    //('‰','%E2%80%B0'),
+    //('Š','%C5%A0'),
+    //('‹','%E2%80%B9'),
+    //('Œ','%C5%92'),
+    //('','%C5%8D'),
+    //('Ž','%C5%BD'),
+    //('','%8F'),
+    //('','%C2%90'),
+    //(','%'E2%80%98'),
+    //(','%'E2%80%99'),
+    //('“','%E2%80%9C'),
+    //('”','%E2%80%9D'),
+    //('•','%E2%80%A2'),
+    //('–','%E2%80%93'),
+    //('—','%E2%80%94'),
+    //('˜','%CB%9C'),
+    //('™','%E2%84'),
+    //('š','%C5%A1'),
+    //('›','%E2%80'),
+    //('œ','%C5%93'),
+    //('','%9D'),
+    //('ž','%C5%BE'),
+    //('Ÿ','%C5%B8'),
+    //(' ','%C2%A0'),
+    //('¡','%C2%A1'),
+    //('¢','%C2%A2'),
+    //('£','%C2%A3'),
+    //('¤','%C2%A4'),
+    //('¥','%C2%A5'),
+    //('¦','%C2%A6'),
+    //('§','%C2%A7'),
+    //('¨','%C2%A8'),
+    //('©','%C2%A9'),
+    //('ª','%C2%AA'),
+    //('«','%C2%AB'),
+    //('¬','%C2%AC'),
+    //(','%'C2%AD'),
+    //('®','%C2%AE'),
+    //('¯','%C2%AF'),
+    //('°','%C2%B0'),
+    //('±','%C2%B1'),
+    //('²','%C2%B2'),
+    //('³','%C2%B3'),
+    //('´','%C2%B4'),
+    //('µ','%C2%B5'),
+    //('¶','%C2%B6'),
+    //('·','%C2%B7'),
+    //('¸','%C2%B8'),
+    //('¹','%C2%B9'),
+    //('º','%C2%BA'),
+    //('»','%C2%BB'),
+    //('¼','%C2%BC'),
+    //('½','%C2%BD'),
+    //('¾','%C2%BE'),
+    //('¿','%C2%BF'),
+    //('À','%C3%80'),
+    //('Á','%C3%81'),
+    //('Â','%C3%82'),
+    //('Ã','%C3%83'),
+    //('Ä','%C3%84'),
+    //('Å','%C3%85'),
+    //('Æ','%C3%86'),
+    //('Ç','%C3%87'),
+    //('È','%C3%88'),
+    //('É','%C3%89'),
+    //('Ê','%C3%8A'),
+    //('Ë','%C3%8B'),
+    //('Ì','%C3%8C'),
+    //('Í','%C3%8D'),
+    //('Î','%C3%8E'),
+    //('Ï','%C3%8F'),
+    //('Ð','%C3%90'),
+    //('Ñ','%C3%91'),
+    //('Ò','%C3%92'),
+    //('Ó','%C3%93'),
+    //('Ô','%C3%94'),
+    //('Õ','%C3%95'),
+    //('Ö','%C3%96'),
+    //('×','%C3%97'),
+    //('Ø','%C3%98'),
+    //('Ù','%C3%99'),
+    //('Ú','%C3%9A'),
+    //('Û','%C3%9B'),
+    //('Ü','%C3%9C'),
+    //('Ý','%C3%9D'),
+    //('Þ','%C3%9E'),
+    //('ß','%C3%9F'),
+    //('à','%C3%A0'),
+    //('á','%C3%A1'),
+    //('â','%C3%A2'),
+    //('ã','%C3%A3'),
+    //('ä','%C3%A4'),
+    //('å','%C3%A5'),
+    //('æ','%C3%A6'),
+    //('ç','%C3%A7'),
+    //('è','%C3%A8'),
+    //('é','%C3%A9'),
+    //('ê','%C3%AA'),
+    //('ë','%C3%AB'),
+    //('ì','%C3%AC'),
+    //('í','%C3%AD'),
+    //('î','%C3%AE'),
+    //('ï','%C3%AF'),
+    //('ð','%C3%B0'),
+    //('ñ','%C3%B1'),
+    //('ò','%C3%B2'),
+    //('ó','%C3%B3'),
+    //('ô','%C3%B4'),
+    //('õ','%C3%B5'),
+    //('ö','%C3%B6'),
+    //('÷','%C3%B7'),
+    //('ø','%C3%B8'),
+    //('ù','%C3%B9'),
+    //('ú','%C3%BA'),
+    //('û','%C3%BB'),
+    //('ü','%C3%BC'),
+    //('ý','%C3%BD'),
+    //('þ','%C3%BE'),
+    //('ÿ','%C3%BF')
+  );
+
+  @function svg-encode($svg) {
+    @each $char, $encoded in $encoding-reference {
+      $svg: str-replace($svg, $char, $encoded);
+    }
+    @return 'data:image/svg+xml,' + $svg;
+  }
+
+@mixin feather {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.ion-ios-arrow-left {
+    background: url(svg-encode('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>')) no-repeat center center;
+    @include feather;
+}
+
+.ion-md-arrow-left {
+    background: url(svg-encode('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>')) no-repeat center center;
+    @include feather;
+}
+
+.ion-wp-arrow-left {
+    background: url(svg-encode('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>')) no-repeat center center;
+    @include feather;
+}

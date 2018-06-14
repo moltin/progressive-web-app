@@ -1,0 +1,76 @@
+page-cart {
+    ion-item.item {
+        ion-thumbnail {
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        ion-label.label {
+            margin: 0 8px 11px 0;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        span {
+            color: color($colors, text-light);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ion-note.note {
+            color: color($colors, text);
+            font-weight: 600;
+            margin: 0 8px;
+        }
+    }
+
+    button.button-full.button-outline {
+        border-color: color($colors, light);
+        border-radius: 64px;
+        border-right-width: 1px;
+        border-left-width: 1px;
+
+        color: color($colors, text);
+    }
+
+    div.container {
+        border-bottom: 1px solid color($colors, light);
+    }
+
+    ion-footer {
+
+        ion-toolbar.toolbar {
+            padding-top: 15px;
+        }
+
+        .toolbar-background {
+            background: white;
+        }
+
+        .subtotal {
+            h2 {
+                margin-top: 0em;
+                text-align: center;
+                width: 100%;
+                font-size: 1.5em;
+
+                span {
+                    color: color($colors, text-light);
+                    font-weight: normal;
+                }
+            }
+        }
+
+        button.button-full.button-outline {
+            border-color: color($colors, primary);
+        }
+    }
+}

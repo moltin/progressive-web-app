@@ -1,0 +1,73 @@
+page-scan {
+
+    div.container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        #scanTarget {
+            background: transparent;
+            height: 100%;
+            width: 100%;
+            position: relative;
+    
+            video, canvas {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                transform: scale(1.2);
+            }
+        }
+    }
+    
+    div.overlay {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 16px;        
+
+        p {
+            color: white;
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            margin-top: 40px;
+        }
+
+        &.scan-overlay {
+            background: url(svg-encode('<svg xmlns="http://www.w3.org/2000/svg" width="375" height="574" viewBox="0 0 375 574"><g fill="none" fill-rule="evenodd"><path fill="#000" fill-opacity=".32" d="M0,0 L375,0 L375,574 L0,574 L0,0 Z M36,179 L340,179 C344.418278,179 348,182.581722 348,187 L348,331 C348,335.418278 344.418278,339 340,339 L36,339 C31.581722,339 28,335.418278 28,331 L28,187 C28,182.581722 31.581722,179 36,179 Z"/><rect width="318.5" height="158.5" x="27.75" y="179.75" stroke="#FFF" stroke-width="1.5" rx="8"/></g></svg>')) no-repeat center center;
+            background-size: cover;
+        }
+
+        &.error-overlay {
+            background-color: #000;
+        }
+
+        &.hidden {
+            display: none;
+        }
+
+    }
+
+    ion-toolbar.toolbar {
+        position: absolute;
+        bottom: 0;
+        height: 50px;
+
+        .toolbar-background {
+            background: transparent;
+            border-top: 1px solid white;
+        }
+
+        button.button-outline {
+            border: none;
+            color: white;
+            text-decoration: underline;
+        }
+
+        button.button-outline.activated {
+            background: transparent
+        }
+    }
+}

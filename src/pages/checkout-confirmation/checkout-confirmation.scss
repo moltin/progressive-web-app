@@ -1,0 +1,123 @@
+page-checkout-confirmation {
+    ion-row.headings {
+        margin-top: 10px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid color($colors, light);
+        position: relative;
+        height: 20px;
+
+        h4 {
+            font-weight: normal;
+            font-size: 1.2em;
+            width: 100%;
+            margin-bottom: 5px;
+            position: absolute;
+            left: 0;
+        }
+
+        span {
+            position: absolute;
+            right: 0;
+            font-weight: 500;
+        }
+    }
+
+    ion-item.item-block.item {
+        border-bottom: 1px solid color($colors, light);
+        padding-left: 0;
+
+        div.item-inner {
+            border-bottom: 0;
+        }
+
+        ion-thumbnail {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+
+            margin-right: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        ion-label.label {
+            margin: -5px 8px 11px 0;
+        }
+
+        h2 {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        span {
+            color: color($colors, text-light);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ion-note.note {
+            margin: 0;
+            text-align: right;
+
+            h4 {
+                color: color($colors, text);
+                font-weight: 600;
+                margin-top: -0.5em;
+            }
+
+            span {
+                color: color($colors, text-light);
+                font-weight: 400;
+                font-size: 0.8em;
+                
+            }
+        }
+    }
+
+    button.button-full.button-outline {
+        border-color: color($colors, light);
+        border-radius: 64px;
+        border-right-width: 1px;
+        border-left-width: 1px;
+
+        color: color($colors, text);
+    }
+
+    div.container {
+        border-bottom: 1px solid color($colors, light);
+    }
+
+    ion-footer {
+
+        ion-toolbar.toolbar {
+            padding-top: 15px;
+        }
+
+        .toolbar-background {
+            background: white;
+        }
+
+        ion-col.total {
+            h4 {
+                margin: 5px 0 0 0;
+                color: color($colors, text-light);
+                font-weight: normal;
+                font-size: 1em;
+            }
+
+            span {
+                color: color($colors, text);
+                font-weight: 600;
+                font-size: 1.5em;
+            }
+        }
+
+        button.button-full.button-outline {
+            border-color: color($colors, primary);
+        }
+    }
+}

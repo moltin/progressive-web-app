@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-title>
+            <img src="/assets/imgs/title-logo.png" />
+        </ion-title>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="closeModal()">
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#arrow-left"/>
+                </svg>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="goToBag();">
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#shopping-bag" />
+                </svg>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="container">
+        <ion-grid class="product">
+            <ion-row class="gallery">
+              <ion-slides pager="true">
+                <img src="{{ product.image }}" />
+              </ion-slides>
+
+            <ion-row class="info">
+                <ion-col>
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description }}</p>
+                </ion-col>
+            </ion-row>
+          </ion-row>
+
+        </ion-grid>
+        <ion-toolbar>
+            <ion-grid>
+                <ion-row class="actions">
+                    <ion-col>
+                        <h4>{{ product.meta.display_price.with_tax.formatted }}</h4>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button block round icon-start (click)="addToCart();">
+                            <svg class="feather">
+                                <use xlink:href="assets/icon/feather-sprite.svg#shopping-bag" />
+                            </svg>
+                            Add to Bag
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-toolbar>
+    </div>
+
+</ion-content>

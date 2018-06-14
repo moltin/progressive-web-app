@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+      <ion-title>
+        {{ categoryName }}
+      </ion-title>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="closeModal()">
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#arrow-left"/>
+                </svg>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="goToBag();">
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#shopping-bag" />
+                </svg>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+      <ion-grid>
+          <ion-row>
+             <ion-col col-33 *ngFor="let product of categoryProductsList">
+                 <div class="card card-1" (click)="goToProduct(product);">
+                   <img src="{{product.image}}">
+                 </div>
+                   <h4>{{ product.name }}</h4>
+                   <p>{{ product.meta.display_price.with_tax.formatted }}</p>
+             </ion-col>
+           </ion-row>
+     </ion-grid>
+
+</ion-content>

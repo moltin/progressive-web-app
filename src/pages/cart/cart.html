@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-navbar class="light">
+        <ion-title>
+            Your Bag <ion-badge *ngIf="cartData.length > 0">{{ cartData.length }}</ion-badge>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+    
+<ion-content>
+    <ion-list>
+        <div class="container" *ngFor="let item of cartData">
+            <ion-item no-lines>
+                <ion-thumbnail item-start>
+                    <img src="{{ getProductImage(item.product_id) }}">
+                </ion-thumbnail>
+                <h2>{{ item.name }}</h2>
+                <span>{{ getProductCategory(item.product_id) }}</span>
+                <ion-note item-end>
+                    {{ item.meta.display_price.with_tax.value.formatted }}
+                </ion-note>
+            </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col id="quantity-{{item.id}}">
+                        <button-select [item]="item" label="Quantity" (onChange)="onChangeQuantity($event);"></button-select>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button full round outline (click)="onDeleteItem(item);">
+                            <svg class="feather">
+                                <use xlink:href="assets/icon/feather-sprite.svg#trash-2" />
+                            </svg>
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="cart.meta != null && cart.data.length > 0">
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row class="subtotal">
+                <h2><span>Subtotal: </span>{{ cart.meta.display_price.with_tax.formatted }}</h2>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <button ion-button full outline round icon-start (click)="scanAnotherItem();">
+                        <svg class="feather">
+                            <use xlink:href="assets/icon/feather-sprite.svg#maximize" />
+                        </svg>
+                        Scan Item
+                    </button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button block round icon-end (click)="checkout();">
+                        Checkout
+                        <svg class="feather">
+                            <use xlink:href="assets/icon/feather-sprite.svg#arrow-right" />
+                        </svg>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

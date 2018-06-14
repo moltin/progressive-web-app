@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar class="light" hideBackButton>
+            <ion-buttons start>
+                    <button ion-button icon-only (click)="goToHome();">
+                        <svg class="feather">
+                            <use xlink:href="assets/icon/feather-sprite.svg#home" />
+                        </svg>
+                    </button>
+                </ion-buttons>
+        <ion-title>
+            Your Receipt
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid padding>
+        <ion-row text-center>
+            <svg class="feather">
+                <use xlink:href="assets/icon/feather-sprite.svg#check-circle" />
+            </svg>
+        </ion-row>
+        <ion-row text-center>
+            <ion-col>
+                <h2>Thank you!</h2>
+                <p>Your purchases have been processed.</p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row no-padding>
+            <ion-segment [(ngModel)]="selectedSegment">
+                <ion-segment-button value="receipt">
+                    Your Receipt
+                </ion-segment-button>
+                <ion-segment-button value="order">
+                    Order Overview
+                </ion-segment-button>
+            </ion-segment>
+        </ion-row>
+
+        <div *ngIf="selectedSegment == 'receipt'">
+            <ion-row text-center class="order-details">
+                <ion-col>
+                    <h3>Time:</h3>
+                    <span>{{ order.meta.timestamps.created_at | date:'shortTime' }}</span>
+                </ion-col>
+                <ion-col>
+                    <h3>Date:</h3>
+                    <span>{{ order.meta.timestamps.created_at | date:'shortDate' }}</span>
+                </ion-col>
+                <ion-col>
+                    <h3>Total Items:</h3>
+                    <span>{{ cartData.length }}</span>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="receipt-verification">
+                <verification-display time="{{ order.meta.timestamps.created_at | date:'shortTime' }}"></verification-display>
+            </ion-row>
+
+            <ion-row text-center class="info">
+                <ion-col>
+                    <p>Please be prepared to show the above code to the attendant on leaving the store if requested.</p>
+                </ion-col>
+            </ion-row>
+
+        </div>
+
+        <div *ngIf="selectedSegment == 'order'">
+            <ion-item *ngFor="let item of cartData" class="product">
+                <ion-thumbnail item-start>
+                    <img src="{{ getProductImage(item.product_id) }}">
+                </ion-thumbnail>
+                <h2>{{ item.name }}</h2>
+                <ion-note item-end>
+                    <h4>{{ item.meta.display_price.with_tax.value.formatted }}</h4>
+                    <span>x{{ item.quantity }}</span>
+                </ion-note>
+            </ion-item>
+
+            <ion-item class="subtotal">
+                <div>
+                    <h4>Subtotal:</h4>
+                    <span>{{ subtotal }}</span>
+                </div>
+                <div *ngIf="promoCode != null" class="promo-code">
+                    <h4>Promo Code:</h4>
+                    <span>{{ promoCode }}</span>
+                </div>
+            </ion-item>
+            <ion-item class="total" no-lines>
+                <div>
+                    <h4>Total:</h4>
+                    <span>{{ cart.meta.display_price.with_tax.formatted }}</span>
+                </div>
+            </ion-item>
+        </div>
+    </ion-grid>
+</ion-content>

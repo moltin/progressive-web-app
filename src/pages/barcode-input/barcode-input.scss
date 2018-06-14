@@ -1,0 +1,48 @@
+page-barcode {
+    text-align: center;
+
+    h4 {
+        margin-top: 18px;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.4em;
+    }
+
+    span.info {
+        color: color($colors, text-light);
+    }
+
+    ion-input.input {
+        margin: 16px auto;
+
+        border: 1px solid #E0E0E0;
+        border-radius: 24px;
+
+        input {
+            text-align: center;
+            font-size: 1.4em;
+        }
+
+        ::-webkit-input-placeholder {
+            text-align: center;
+         }
+         
+        :-moz-placeholder { /* Firefox 18- */
+            text-align: center;  
+         }
+         
+        ::-moz-placeholder {  /* Firefox 19+ */
+            text-align: center;  
+         }
+         
+        :-ms-input-placeholder {  
+            text-align: center; 
+         }
+    }
+
+    button.button-block {
+        margin-bottom: 24px;
+    }
+}

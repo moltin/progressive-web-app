@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let number of getElements();" [ngClass]="{ 'active': number < current }">
+        <span></span>
+        <p>{{ elements[number - 1]}}</p>
+    </li>
+</ul>

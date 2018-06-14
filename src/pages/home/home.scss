@@ -1,0 +1,48 @@
+page-home {
+    ion-content.content {
+        background: #ff117e; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #ff117e 40%, #ff8126 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #ff117e 40%,#ff8126 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #ff117e 40%,#ff8126 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+        ion-grid.grid {
+            height: 100%;
+
+            img {
+                width: 195px;
+                height: auto;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                margin-top: 10%;
+            }
+
+            ion-row.fill {
+                background: white;
+                flex: 1;
+            }
+    
+            ion-row.info {
+                padding: 20px;
+                margin-top: 40px;
+                background:white;
+                border-top-left-radius: 10%;
+                border-top-right-radius: 10%;
+
+                h2 {
+                    margin-top: 24px;
+                    text-align: center;
+                    margin-bottom: 24px;
+                    line-height: 1.3em;
+                }
+
+                p {
+                    text-align: center;
+                    margin-bottom: 24px;
+                    font-size: 1.2em;
+                    line-height: 1.5em;
+                }
+            }
+        }
+    }
+}

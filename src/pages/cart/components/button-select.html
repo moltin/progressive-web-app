@@ -1,0 +1,9 @@
+<ion-item [hidden]="true">
+    <ion-label>{{ label }}</ion-label>
+    <ion-select (ionChange)="onQuantityChange()">
+        <ion-option *ngFor="let value of getQuantityOptions()" [value]="value">{{value}}</ion-option>
+    </ion-select>
+</ion-item>
+<button ion-button full round outline (click)="openQuantity();">
+    x{{ item.quantity }}
+</button>
