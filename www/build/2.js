@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 840:
+/***/ 839:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckoutConfirmationModule", function() { return CheckoutConfirmationModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout_confirmation__ = __webpack_require__(855);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_cart_progress_cart_progress_module__ = __webpack_require__(850);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout_confirmation__ = __webpack_require__(852);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_cart_progress_cart_progress_module__ = __webpack_require__(848);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,13 +44,13 @@ var CheckoutConfirmationModule = (function () {
 
 /***/ }),
 
-/***/ 850:
+/***/ 848:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartProgressModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cart_progress__ = __webpack_require__(851);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cart_progress__ = __webpack_require__(849);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(56);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -84,7 +84,7 @@ var CartProgressModule = (function () {
 
 /***/ }),
 
-/***/ 851:
+/***/ 849:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -131,7 +131,7 @@ var CartProgress = (function () {
 
 /***/ }),
 
-/***/ 855:
+/***/ 852:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

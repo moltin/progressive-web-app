@@ -1,15 +1,15 @@
 webpackJsonp([4],{
 
-/***/ 848:
+/***/ 838:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReceiptPageModule", function() { return ReceiptPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartModule", function() { return CartModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__receipt__ = __webpack_require__(863);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verification_verification__ = __webpack_require__(864);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart__ = __webpack_require__(850);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_button_select__ = __webpack_require__(851);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,35 +20,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ReceiptPageModule = (function () {
-    function ReceiptPageModule() {
+var CartModule = (function () {
+    function CartModule() {
     }
-    ReceiptPageModule = __decorate([
+    CartModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__receipt__["a" /* ReceiptPage */],
-                __WEBPACK_IMPORTED_MODULE_3__verification_verification__["a" /* VerificationDisplay */]
+                __WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */],
+                __WEBPACK_IMPORTED_MODULE_3__components_button_select__["a" /* ButtonSelect */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__receipt__["a" /* ReceiptPage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */])
             ],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_2__receipt__["a" /* ReceiptPage */]
+                __WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */]
             ]
         })
-    ], ReceiptPageModule);
-    return ReceiptPageModule;
+    ], CartModule);
+    return CartModule;
 }());
 
-//# sourceMappingURL=receipt.module.js.map
+//# sourceMappingURL=cart.module.js.map
 
 /***/ }),
 
-/***/ 863:
+/***/ 850:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReceiptPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_moltin_moltin__ = __webpack_require__(410);
@@ -64,91 +64,107 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ReceiptPage = (function () {
-    function ReceiptPage(navController, navParams, moltin, changeDetector, loadingController) {
+var CartPage = (function () {
+    function CartPage(navController, moltin, changeDetector, loadingController) {
         var _this = this;
         this.navController = navController;
-        this.navParams = navParams;
         this.moltin = moltin;
         this.changeDetector = changeDetector;
         this.loadingController = loadingController;
         this.cartData = [];
         this.cart = { data: [], meta: null };
         this.products = {};
-        this.order = this.navParams.get('order');
-        this.selectedSegment = "receipt";
         this.moltin.getCart().subscribe(function (data) {
             _this.cart = data;
             _this.cartData = _this.cart.data.filter(function (x) { return x["type"] == "cart_item"; });
-            var promoCodes = _this.cart.data.filter(function (x) { return x["type"] == "promotion_item"; });
-            if (promoCodes.length > 0) {
-                _this.promoCode = promoCodes[0].sku;
-            }
-            _this.getSubtotal();
             _this.getProducts();
-            _this.moltin.deleteCart().subscribe(function (data) { return console.log(data); }, function (error) { return console.error(error); });
         }, function (error) { return console.error(error); });
     }
-    ReceiptPage.prototype.getSubtotal = function () {
-        var numberFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-        var total = this.cartData.reduce(function (accumulator, current) {
-            return accumulator + (current.value.amount / 100) * current.quantity;
-        }, 0);
-        this.subtotal = numberFormatter.format(total);
-    };
-    ReceiptPage.prototype.getProducts = function () {
+    CartPage.prototype.getProducts = function () {
         var _this = this;
         this.cartData.forEach(function (item) {
             _this.getProductById(item.product_id);
         });
     };
-    ReceiptPage.prototype.getProductById = function (productId) {
+    CartPage.prototype.getProductById = function (productId) {
         var _this = this;
         this.moltin.getProductById(productId).subscribe(function (data) {
+            console.log(data);
             _this.products[productId] = data;
             _this.changeDetector.detectChanges();
         });
     };
-    ReceiptPage.prototype.getProductImage = function (productId) {
+    CartPage.prototype.getProductImage = function (productId) {
         var product = this.products[productId];
         if (!product) {
             return "";
         }
         return product.main_image.link.href;
     };
-    ReceiptPage.prototype.getProductCategory = function (productId) {
+    CartPage.prototype.getProductCategory = function (productId) {
         var product = this.products[productId];
         if (!product) {
             return "";
         }
         return product.categories[0].name;
     };
-    ReceiptPage.prototype.goToHome = function () {
-        this.navController.popToRoot();
+    CartPage.prototype.onChangeQuantity = function (element) {
+        var _this = this;
+        var loadingIndicator = this.loadingController.create({
+            content: "Updating..."
+        });
+        loadingIndicator.present();
+        this.moltin.updateCartItem(element.item.id, element.getValue()).subscribe(function (data) {
+            _this.cart = data;
+            _this.changeDetector.detectChanges();
+            loadingIndicator.dismiss();
+        }, function (error) {
+            loadingIndicator.dismiss();
+        });
     };
-    ReceiptPage = __decorate([
+    CartPage.prototype.onDeleteItem = function (item) {
+        var _this = this;
+        var loadingIndicator = this.loadingController.create({
+            content: "Deleting..."
+        });
+        loadingIndicator.present();
+        this.moltin.deleteCartItem(item.id).subscribe(function (data) {
+            _this.cart = data;
+            _this.changeDetector.detectChanges();
+            loadingIndicator.dismiss();
+        }, function (error) {
+            loadingIndicator.dismiss();
+        });
+    };
+    CartPage.prototype.scanAnotherItem = function () {
+        this.navController.push('scan');
+    };
+    CartPage.prototype.checkout = function () {
+        this.navController.push('checkout-detail', { 'cart': this.cart });
+    };
+    CartPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-receipt',template:/*ion-inline-start:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/receipt/receipt.html"*/'<ion-header>\n    <ion-navbar class="light" hideBackButton>\n            <ion-buttons start>\n                    <button ion-button icon-only (click)="goToHome();">\n                        <svg class="feather">\n                            <use xlink:href="assets/icon/feather-sprite.svg#home" />\n                        </svg>\n                    </button>\n                </ion-buttons>\n        <ion-title>\n            Your Receipt\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid padding>\n        <ion-row text-center>\n            <svg class="feather">\n                <use xlink:href="assets/icon/feather-sprite.svg#check-circle" />\n            </svg>\n        </ion-row>\n        <ion-row text-center>\n            <ion-col>\n                <h2>Thank you!</h2>\n                <p>Your purchases have been processed.</p>\n            </ion-col>\n        </ion-row>\n\n        <ion-row no-padding>\n            <ion-segment [(ngModel)]="selectedSegment">\n                <ion-segment-button value="receipt">\n                    Your Receipt\n                </ion-segment-button>\n                <ion-segment-button value="order">\n                    Order Overview\n                </ion-segment-button>\n            </ion-segment>\n        </ion-row>\n\n        <div *ngIf="selectedSegment == \'receipt\'">\n            <ion-row text-center class="order-details">\n                <ion-col>\n                    <h3>Time:</h3>\n                    <span>{{ order.meta.timestamps.created_at | date:\'shortTime\' }}</span>\n                </ion-col>\n                <ion-col>\n                    <h3>Date:</h3>\n                    <span>{{ order.meta.timestamps.created_at | date:\'shortDate\' }}</span>\n                </ion-col>\n                <ion-col>\n                    <h3>Total Items:</h3>\n                    <span>{{ cartData.length }}</span>\n                </ion-col>\n            </ion-row>\n\n            <ion-row class="receipt-verification">\n                <verification-display time="{{ order.meta.timestamps.created_at | date:\'shortTime\' }}"></verification-display>\n            </ion-row>\n\n            <ion-row text-center class="info">\n                <ion-col>\n                    <p>Please be prepared to show the above code to the attendant on leaving the store if requested.</p>\n                </ion-col>\n            </ion-row>\n\n        </div>\n\n        <div *ngIf="selectedSegment == \'order\'">\n            <ion-item *ngFor="let item of cartData" class="product">\n                <ion-thumbnail item-start>\n                    <img src="{{ getProductImage(item.product_id) }}">\n                </ion-thumbnail>\n                <h2>{{ item.name }}</h2>\n                <ion-note item-end>\n                    <h4>{{ item.meta.display_price.with_tax.value.formatted }}</h4>\n                    <span>x{{ item.quantity }}</span>\n                </ion-note>\n            </ion-item>\n\n            <ion-item class="subtotal">\n                <div>\n                    <h4>Subtotal:</h4>\n                    <span>{{ subtotal }}</span>\n                </div>\n                <div *ngIf="promoCode != null" class="promo-code">\n                    <h4>Promo Code:</h4>\n                    <span>{{ promoCode }}</span>\n                </div>\n            </ion-item>\n            <ion-item class="total" no-lines>\n                <div>\n                    <h4>Total:</h4>\n                    <span>{{ cart.meta.display_price.with_tax.formatted }}</span>\n                </div>\n            </ion-item>\n        </div>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/receipt/receipt.html"*/
+            selector: 'page-cart',template:/*ion-inline-start:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/cart/cart.html"*/'<ion-header>\n    <ion-navbar class="light">\n        <ion-title>\n            Your Bag <ion-badge *ngIf="cartData.length > 0">{{ cartData.length }}</ion-badge>\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n    \n<ion-content>\n    <ion-list>\n        <div class="container" *ngFor="let item of cartData">\n            <ion-item no-lines>\n                <ion-thumbnail item-start>\n                    <img src="{{ getProductImage(item.product_id) }}">\n                </ion-thumbnail>\n                <h2>{{ item.name }}</h2>\n                <span>{{ getProductCategory(item.product_id) }}</span>\n                <ion-note item-end>\n                    {{ item.meta.display_price.with_tax.value.formatted }}\n                </ion-note>\n            </ion-item>\n            <ion-grid>\n                <ion-row>\n                    <ion-col id="quantity-{{item.id}}">\n                        <button-select [item]="item" label="Quantity" (onChange)="onChangeQuantity($event);"></button-select>\n                    </ion-col>\n                    <ion-col>\n                        <button ion-button full round outline (click)="onDeleteItem(item);">\n                            <svg class="feather">\n                                <use xlink:href="assets/icon/feather-sprite.svg#trash-2" />\n                            </svg>\n                        </button>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n        </div>\n    </ion-list>\n</ion-content>\n\n<ion-footer *ngIf="cart.meta != null && cart.data.length > 0">\n    <ion-toolbar>\n        <ion-grid>\n            <ion-row class="subtotal">\n                <h2><span>Subtotal: </span>{{ cart.meta.display_price.with_tax.formatted }}</h2>\n            </ion-row>\n            <ion-row>\n                <ion-col>\n                    <button ion-button full outline round icon-start (click)="scanAnotherItem();">\n                        <svg class="feather">\n                            <use xlink:href="assets/icon/feather-sprite.svg#maximize" />\n                        </svg>\n                        Scan Item\n                    </button>\n                </ion-col>\n                <ion-col>\n                    <button ion-button block round icon-end (click)="checkout();">\n                        Checkout\n                        <svg class="feather">\n                            <use xlink:href="assets/icon/feather-sprite.svg#arrow-right" />\n                        </svg>\n                    </button>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/cart/cart.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__providers_moltin_moltin__["a" /* Moltin */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
-    ], ReceiptPage);
-    return ReceiptPage;
+    ], CartPage);
+    return CartPage;
 }());
 
-//# sourceMappingURL=receipt.js.map
+//# sourceMappingURL=cart.js.map
 
 /***/ }),
 
-/***/ 864:
+/***/ 851:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerificationDisplay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonSelect; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(186);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -159,22 +175,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var VerificationDisplay = (function () {
-    function VerificationDisplay() {
+
+var ButtonSelect = (function () {
+    function ButtonSelect() {
+        this.onChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
     }
+    ButtonSelect.prototype.getQuantityOptions = function () {
+        return Array.from({ length: Math.max(10, this.item.quantity) }, function (x, i) { return i + 1; });
+    };
+    ButtonSelect.prototype.openQuantity = function () {
+        this.select.open();
+    };
+    ButtonSelect.prototype.onQuantityChange = function () {
+        this.button.getNativeElement().textContent = "x" + this.getValue();
+        this.onChange.emit(this);
+    };
+    ButtonSelect.prototype.getValue = function () {
+        return this.select.value;
+    };
+    ButtonSelect.prototype.setValue = function (value) {
+        this.button.getNativeElement().textContent = "x" + value;
+        this.select.setValue(value);
+    };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('time'),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Button */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Button */])
+    ], ButtonSelect.prototype, "button", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Select */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Select */])
+    ], ButtonSelect.prototype, "select", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('item'),
+        __metadata("design:type", Object)
+    ], ButtonSelect.prototype, "item", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])('label'),
         __metadata("design:type", String)
-    ], VerificationDisplay.prototype, "time", void 0);
-    VerificationDisplay = __decorate([
+    ], ButtonSelect.prototype, "label", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */])
+    ], ButtonSelect.prototype, "onChange", void 0);
+    ButtonSelect = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'verification-display',template:/*ion-inline-start:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/receipt/verification/verification.html"*/'<h3>{{ time }}</h3>'/*ion-inline-end:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/receipt/verification/verification.html"*/
+            selector: 'button-select',template:/*ion-inline-start:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/cart/components/button-select.html"*/'<ion-item [hidden]="true">\n    <ion-label>{{ label }}</ion-label>\n    <ion-select (ionChange)="onQuantityChange()">\n        <ion-option *ngFor="let value of getQuantityOptions()" [value]="value">{{value}}</ion-option>\n    </ion-select>\n</ion-item>\n<button ion-button full round outline (click)="openQuantity();">\n    x{{ item.quantity }}\n</button>'/*ion-inline-end:"/Users/georgefitzgibbons/dev/mobile-checkout/src/pages/cart/components/button-select.html"*/
         })
-    ], VerificationDisplay);
-    return VerificationDisplay;
+    ], ButtonSelect);
+    return ButtonSelect;
 }());
 
-//# sourceMappingURL=verification.js.map
+//# sourceMappingURL=button-select.js.map
 
 /***/ })
 

@@ -22,8 +22,5 @@ export class HomePage {
       let productCatalogPage = this.modalController.create('productCatalog');
       productCatalogPage.present();
     }
-    scanProduct() {
-        let scanModal = this.modalController.create('scan');
-        scanModal.present();
-    }
+    
 }
