@@ -1,4 +1,4 @@
-# Mobile Self Checkout
+# Mobile Commerce
 
 ## Why?
 Boilerplate commerce store that can be used with Moltin API, to quickly make a progressive web app commerce experiance.
