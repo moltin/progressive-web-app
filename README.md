@@ -13,8 +13,4 @@ Craig Tweed, George FitzGibbons
  - Ensure https://ionicframework.com/ is installed on the development machine
  - Run `npm install`
  - Run `ionic serve [--lab --livereload]`
- 
-### Deploying the project
- - Ensure https://devcenter.heroku.com/articles/heroku-cli is set up
- - Create a `git` commit
- - `git push heroku master`
+
