@@ -5,6 +5,8 @@ Boilerplate commerce store that can be used with Moltin API, to quickly make a p
 
 ## What does this application do?
 The application is fetching categories and products from a demo store and has complete checkout flow.
+
+Check out the [Demo](https://evening-peak-15305.herokuapp.com/#/home) here.
  
 ## Contributing
 Craig Tweed, George FitzGibbons
