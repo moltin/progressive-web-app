@@ -1,7 +1,7 @@
 # Mobile Commerce
 
 ## Why?
-Boilerplate commerce store that can be used with Moltin API, to quickly make a progressive web app commerce experiance.
+Boilerplate commerce store that can be used with Moltin API, to quickly make a progressive web app commerce experience.
 
 ## What does this application do?
 The application is fetching categories and products from a demo store and has complete checkout flow.
