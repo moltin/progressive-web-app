@@ -45,7 +45,6 @@ export class ProductCatalog {
         this.products = data;
         //product data
         this.productData = this.products.data
-        //data from the include (in the api request add in the included for category could be anything)
         this.productIncluded = data['included']
         //pull category out of the included
         this.categoryList = this.productIncluded['categories']
@@ -59,9 +58,8 @@ export class ProductCatalog {
             const catId = product['relationships'].categories
               ? product['relationships'].categories.data[0]["id"]
               : false
-              //no loop through and match them to the included data (categoery object in this case)
+              //now loop through and match them to the included data (categoery object in this case)
            return {
-           //what we are going be looping
             ...product,
             //id from product id to the the id of the included then add to product
             image: imageId
@@ -70,14 +68,11 @@ export class ProductCatalog {
 
               categoriesName: catId
               ? this.productIncluded['categories'].find(cat => cat.id === catId).name
-              : 'Party supplies'
+              : 'Category Name'
             }
           })
 
-
-          console.log("listsss",this.productList);
-
-          //This is not good.  I know there are 4 cats, so just splitting them up and putting them in there own array to display.
+          console.log("lists",this.productList);
           for (var i=0; i<this.productList.length; i++) {
             if (this.productList[i]["categoriesName"]=="Facial Skincare") {
               this.filteredCatSkin.push({
