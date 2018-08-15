@@ -32,15 +32,12 @@ export class ProductList {
         private moltin: Moltin
     )
     {
-      console.log("anything", this.categoryName)
-      console.log("little mote", this.categoryProducts)
       for (var i=0; i<this.categoryProducts.length; i++) {
           this.categoryProductsList.push(this.categoryProducts[i]["products"])
         }
-        console.log("there we go mote", this.categoryProductsList)
     }
 
-    // //Actions
+    //Actions
     closeModal() {
       let productCatalogPage = this.modalController.create('productCatalog');
       productCatalogPage.present();
