@@ -1,0 +1,13 @@
+{
+  "name": "Mobile Self Checkout",
+  "short_name": "Mobile Self Checkout",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/icon/android-chrome-512x512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#FF7380",
+  "theme_color": "#FF7380"
+}

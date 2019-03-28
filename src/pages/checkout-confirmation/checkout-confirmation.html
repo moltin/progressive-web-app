@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar class="grey">
+        <ion-title>
+            Checkout
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid no-padding>
+        <ion-row>
+            <cart-progress amount=3 current=3></cart-progress>
+        </ion-row>
+    </ion-grid>
+    <ion-grid padding>
+        <ion-row class="headings" *ngIf="promoCode != null">
+            <h4>Voucher Code</h4>
+            <span>{{ promoCode }}</span>
+        </ion-row>
+        <ion-row class="headings">
+            <h4>Payment Method</h4>
+            <span>{{ token.card.brand }} {{ token.card.last4 }}</span>
+        </ion-row>
+        <ion-row class="headings">
+            <h4>Your Items</h4>
+            <span>
+                <a (click)="editCart();">Edit</a>
+            </span>
+        </ion-row>
+
+        <ion-item *ngFor="let item of cartData">
+            <ion-thumbnail item-start>
+                <img src="{{ getProductImage(item.product_id) }}">
+            </ion-thumbnail>
+            <h2>{{ item.name }}</h2>
+            <ion-note item-end>
+                <h4>{{ item.meta.display_price.with_tax.value.formatted }}</h4>
+                <span>x{{ item.quantity }}</span>
+            </ion-note>
+        </ion-item>
+    </ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="cart.meta != null && cart.data.length > 0">
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col class="total">
+                    <h4>Total</h4>
+                    <span>{{ cart.meta.display_price.with_tax.formatted }}</span>
+                </ion-col>
+                <ion-col>
+                    <button ion-button block round icon-end (click)="pay();">
+                        Pay Now
+                        <svg class="feather">
+                            <use xlink:href="assets/icon/feather-sprite.svg#arrow-right" />
+                        </svg>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

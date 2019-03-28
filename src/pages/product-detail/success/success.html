@@ -1,0 +1,22 @@
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <svg class="feather">
+                <use xlink:href="assets/icon/feather-sprite.svg#check-circle" />
+            </svg>
+            <ion-card-title>Added to your bag</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <button ion-button full outline round icon-start (click)="keepShopping();">
+                Keep Shopping
+            </button>
+            <button ion-button block round icon-end (click)="goToBag();">
+                Go to Your Bag
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#shopping-bag" />
+                </svg>
+            </button>
+        </ion-card-content>
+
+    </ion-card>
+</ion-content>

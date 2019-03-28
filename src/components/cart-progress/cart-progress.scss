@@ -1,0 +1,50 @@
+cart-progress {
+    background: color($colors, nav-grey);
+    width: 100%;
+
+    ul {
+        padding: 0;
+        text-align: center;
+    }
+
+    li {
+        width: 25%;
+        
+        margin: 0 1em;
+        display: inline-block;
+        position: relative;
+
+        span {
+            width: 1.25em;
+            height: 1.25em;
+            border-radius: 1em;
+            background: white;
+            border: 2px solid color($colors, primary);
+            display: inline-block;
+            z-index: 2;
+            position: relative;
+        }
+    }
+
+    li::before {
+        content: '';
+        position: absolute;
+        top: 0.5em;
+        left: -75%;
+        width: 125%;
+        height: .2em;
+        background: color($colors, primary);
+        z-index: 1;
+    }
+    
+    li:first-child::before {
+        display: none;
+    }
+    
+    li.active {
+        span {
+            background: color($colors, primary);
+        }
+        
+    }
+}

@@ -1,0 +1,29 @@
+<ion-content>
+    <ion-grid no-padding>
+        <ion-row>
+            <ion-col>
+                <img src="assets/imgs/full-logo.png" />
+            </ion-col>
+        </ion-row>
+        <ion-row class="info">
+            <ion-col>
+                <h2>Bright Cosmetics</h2>
+                <p>Be Inspired By Our Wide Selection Of Luxury Cosmetics At Affordable Prices.</p>
+                <button ion-button block round icon-end (click)="getProductCatalog();" [ngStyle]="{'background-color': buttonColor}">
+                    Browse Catalog
+                    <svg class="feather">
+                        <use xlink:href="assets/imgs/catalogbook.svg"/>
+                    </svg>
+                </button>
+
+                <button ion-button icon-start clear class="text-only">
+                    <svg class="feather">
+                        <use xlink:href="assets/icon/feather-sprite.svg#help-circle"/>
+                    </svg>
+                    More Information
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row class="fill"></ion-row>
+    </ion-grid>
+</ion-content>

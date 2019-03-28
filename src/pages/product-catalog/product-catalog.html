@@ -1,0 +1,91 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-title>
+            Catalogue
+        </ion-title>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="closeModal()">
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#arrow-left"/>
+                </svg>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="goToBag();">
+                <svg class="feather">
+                    <use xlink:href="assets/icon/feather-sprite.svg#shopping-bag" />
+                </svg>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+ <div class="container">
+     <ion-col class="header" (click)="getProductList('Haircare')">
+         <h1>Haircare</h1>
+          <h3>View all</h3>
+      </ion-col>
+          <ion-slides pager="true">
+              <ion-item>
+              <ion-row>
+                <ion-slides>
+                  <ion-col col-33 *ngFor="let product of filteredHair">
+                    <div class="card card-1" (click)="goToProduct(product.products);">
+                        <img src="{{product.image}}">
+                      </div>
+                        <h4>{{ product.productName }}</h4>
+                        <p>{{ product.productFormattedPrice }}</p>
+                  </ion-col>
+                </ion-slides>
+                </ion-row>
+            </ion-item>
+          </ion-slides>
+
+      <ion-col class="header" (click)="getProductList('Facial Skincare')">
+          <h1>Facial Skincare</h1>
+           <h3>View all</h3>
+       </ion-col>
+ <ion-slides pager="true">
+     <ion-item>
+     <ion-row>
+       <ion-item no-lines text-wrap>
+       <ion-slides>
+         <ion-col col-33 *ngFor="let product of filteredCatSkin">
+           <div class="card card-1" (click)="goToProduct(product.products);">
+               <img src="{{product.image}}">
+             </div>
+               <h4>{{ product.productName }}</h4>
+               <p>{{ product.productFormattedPrice }}</p>
+         </ion-col>
+       </ion-slides>
+     </ion-item>
+       </ion-row>
+   </ion-item>
+ </ion-slides>
+
+ <ion-col class="header" (click)="getProductList('Body Skincare')">
+     <h1>Body Skincare</h1>
+      <h3>View all</h3>
+  </ion-col>
+<ion-slides pager="true">
+<ion-item>
+<ion-row>
+  <ion-item no-lines text-wrap>
+  <ion-slides>
+    <ion-col col-33 *ngFor="let product of filteredCatSkin">
+      <div class="card card-1" (click)="goToProduct(product.products);">
+          <img src="{{product.image}}">
+        </div>
+          <h4>{{ product.productName }}</h4>
+          <p>{{ product.productFormattedPrice }}</p>
+    </ion-col>
+  </ion-slides>
+</ion-item>
+  </ion-row>
+</ion-item>
+</ion-slides>
+
+
+</div>
+</ion-content>

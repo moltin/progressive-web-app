@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar class="grey">
+        <ion-title>
+            Payment Method
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid no-padding>
+        <ion-row>
+            <cart-progress amount=3 current=2></cart-progress>
+        </ion-row>
+    </ion-grid>
+    <ion-grid padding>
+        <ion-row>
+            <h4>Apply a Promo Code</h4>
+        </ion-row>
+        <ion-row>
+            <ion-col class="promo">
+                <ion-input placeholder="Promo Code" class="rounded" [(ngModel)]="promoCode"></ion-input>
+            </ion-col>
+            <ion-col col-3>
+                <button ion-button block round icon-end (click)="applyPromoCode();">
+                    Apply
+                    <svg class="feather">
+                        <use xlink:href="assets/icon/feather-sprite.svg#arrow-right" />
+                    </svg>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row  *ngIf="canMakePayment">
+            <h4>Choose a Payment Method</h4>
+        </ion-row>
+        <ion-row class="payment-methods" *ngIf="canMakePayment">
+            <ion-col *ngIf="canMakePayment" text-center [ngClass]="{ 'selected': selectedPaymentMethod == 'apple-pay' }">
+                <div id="payment-request-button">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+                Apple Pay
+            </ion-col>
+            <ion-col text-center [ngClass]="{ 'selected': selectedPaymentMethod == 'card' }">
+                <button ion-button full outline round (click)="pay();">
+                    <svg class="feather">
+                        <use xlink:href="assets/icon/feather-sprite.svg#credit-card" />
+                    </svg>
+                </button>
+                Credit Card
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <h4>Card Details</h4>
+        </ion-row>
+        <ion-row class="card-details" [ngClass]="{ 'hidden': selectedPaymentMethod != 'card' }">
+            <div id="card-element" class="rounded">
+                <!-- A Stripe Element will be inserted here. -->
+            </div>
+        </ion-row>
+        <ion-row *ngIf="selectedPaymentMethod == 'card'">
+            <ion-col>
+                <button ion-button block round icon-end (click)="confirmOrder();" [disabled]="!formIsValid">
+                    Order Confirmation
+                    <svg class="feather">
+                        <use xlink:href="assets/icon/feather-sprite.svg#arrow-right" />
+                    </svg>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

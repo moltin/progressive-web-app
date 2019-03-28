@@ -1,0 +1,11 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+platforms/*
+!platforms/browser/
+!platforms/browser/www
+!platforms/browser/www/plugins

@@ -1,0 +1,109 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #FF117E,
+  accent:     #FF4852,
+  text:       #3D3D3D,
+  text-light: rgba(#000, 0.4),
+  text-accent:#FF117E,
+  light:      #EDEDED,
+  dark:       #222,
+  white:      #FFFFFF,
+  nav-grey:   #F5F6F7
+);
+
+$toolbar-background: color($colors, primary);
+
+$text-color: color($colors, text);
+
+$font-family-base: "Fira Sans Condensed", "Roboto", "Helvetica Neue", sans-serif;
+
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+$font-family-ios-base: "Fira Sans Condensed", "Roboto", "Helvetica Neue", sans-serif;
+$searchbar-ios-background-color: transparent;
+$searchbar-ios-input-text-color: color($colors, text);
+$searchbar-ios-input-background-color: #ECECED;
+$searchbar-ios-input-clear-icon-color: color($colors, text);
+$searchbar-ios-input-placeholder-color: color($colors, text);
+$searchbar-ios-input-search-icon-color: color($colors, text);
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+$font-family-md-base: "Fira Sans Condensed", "Roboto", "Helvetica Neue", sans-serif;
+$searchbar-md-background-color: transparent;
+$searchbar-md-input-text-color: color($colors, text);;
+$searchbar-md-input-background-color: #ECECED;
+$searchbar-md-input-clear-icon-color: color($colors, text);
+$searchbar-md-input-placeholder-color: color($colors, text);
+$searchbar-md-input-search-icon-color: color($colors, text);
+$searchbar-md-input-clear-icon-color: color($colors, text);
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+$font-family-wp-base: "Fira Sans Condensed", "Roboto", "Helvetica Neue", sans-serif;
+$searchbar-wp-background-color: transparent;
+$searchbar-wp-input-text-color: color($colors, text);
+$searchbar-wp-input-background-color: #ECECED;
+$searchbar-wp-input-clear-icon-color: color($colors, text);
+$searchbar-wp-input-placeholder-color: color($colors, text);
+$searchbar-wp-input-search-icon-color: color($colors, text);
+$searchbar-wp-border-color: color($colors, text);
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";

@@ -1,0 +1,80 @@
+page-product {
+
+    ion-header {
+      padding-top: 20px;
+      background: color($colors, primary); /* Old browsers */
+      background: -moz-linear-gradient(225deg, color($colors, accent) 0%, color($colors, primary) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(225deg, color($colors, accent) 00%,color($colors, primary) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(225deg, color($colors, accent) 00%,color($colors, primary) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */    }
+
+    div.container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    ion-grid.product {
+        position: absolute;
+    }
+
+    ion-row.gallery {
+        height: 260px;
+
+        .slide-zoom {
+            height: 260px;
+        }
+
+        .swiper-pagination-bullet {
+            background: #EDEDED;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: color($colors, primary);
+        }
+    }
+
+    ion-row.info {
+        text-align: center;
+        padding: 0 24px 16px 24px;
+
+        h2 {
+            margin-top: 1rem;
+        }
+
+        span {
+            color: color($colors, text-light);
+            font-size: 1.2em;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5em;
+            // max-height: 4.5em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    ion-row.actions {
+        padding: 16px 20px;
+
+        h4 {
+            font-size: 2em;
+            line-height: 1em;
+        }
+    }
+
+    ion-toolbar.toolbar {
+        position: absolute;
+        bottom: 0;
+        height: 50px;
+        margin-bottom: 20px;
+
+        .toolbar-background {
+            background: transparent;
+            border-top: 1px solid white;
+        }
+    }
+}
